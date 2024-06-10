@@ -28,7 +28,7 @@ def predict(request):
         if analysis_field not in data.columns:
             return JsonResponse({'error': f'Invalid analysis field: {analysis_field}'}, status=400)
 
-        prediction, accuracy = train_and_predict(data, months_ahead)
+        prediction, accuracy = train_and_predict(data, months_ahead, analysis_field)
 
         formatted_predictions = [round(price, 2) for price in prediction]
         formatted_accuracy = round(accuracy, 2)

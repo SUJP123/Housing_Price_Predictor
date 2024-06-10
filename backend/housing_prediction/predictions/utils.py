@@ -24,14 +24,14 @@ def create_features(data):
     data['year'] = data['date'].dt.year
     return data[['interest', 'vacancy', 'cpi', 'month', 'year']], data['price']
 
-def train_and_predict(data, months_ahead):
+def train_and_predict(data, months_ahead, analyze):
     # Data preprocessing
     data['date'] = pd.to_datetime(data['date'])
     data = data.set_index('date')
     data = data.ffill()
 
-    X = data.drop(columns=['price', 'adj_price', 'next_quarter'])
-    y = data['adj_value']
+    X = data.drop(columns=[analyze, 'adj_price', 'next_quarter'])
+    y = data[analyze]
 
     # Train/test split
     X_train, y_train = X[:-months_ahead], y[:-months_ahead]
