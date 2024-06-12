@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from .utils import train_and_predict, generate_analysis, generateOverTimePlot
 
+
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'processed_data')
 
 @api_view(['POST'])
