@@ -2,9 +2,9 @@
     "version": 2,
     "builds": [
       {
-        "src": "backend/housing_prediction/housing_prediction/wsgi.py",
+        "src": "housing_prediction/wsgi.py",
         "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
       },
       {
         "src": "build_files.sh",
@@ -21,7 +21,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "backend/housing_prediction/housing_prediction/wsgi.py"
+        "dest": "housing_prediction/wsgi.py"
       }
     ]
   }
